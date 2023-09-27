@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 
 class GameViewModel  : ViewModel() {
-    private var score = 0
+    private var _score = 0
     val score: Int
         get() = _score
     private var currentWordCount = 0
@@ -20,18 +20,6 @@ class GameViewModel  : ViewModel() {
     }
 
     override fun onCleared() {
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle(getString(R.string.congratulations))
-            .setMessage(getString(R.string.you_scored, viewModel.score))
-            .setCancelable(false)
-            .setNegativeButton(getString(R.string.exit)) { _, _ ->
-                exitGame()
-            }
-            .setPositiveButton(getString(R.string.play_again)) { _, _ ->
-                restartGame()
-            }
-            .show()
-    }
         super.onCleared()
         Log.d("GameFragment", "GameViewModel destroyed!")
     }
@@ -51,16 +39,16 @@ class GameViewModel  : ViewModel() {
             ++currentWordCount
             wordsList.add(currentWord)
         }
+    }
+
         fun nextWord(): Boolean {
             return if (currentWordCount < MAX_NO_OF_WORDS) {
                 getNextWord()
                 true
             } else false
         }
-        private fun onSubmitWord() {
-            val playerWord = binding.textInputEditText.text.toString()
-            ...
-        }
+
+
         private fun onSubmitWord() {
             val playerWord = binding.textInputEditText.text.toString()
 
