@@ -41,43 +41,52 @@ class GameViewModel  : ViewModel() {
         }
     }
 
-        fun nextWord(): Boolean {
-            return if (currentWordCount < MAX_NO_OF_WORDS) {
-                getNextWord()
-                true
-            } else false
-        }
+    fun nextWord(): Boolean {
+        return if (currentWordCount < MAX_NO_OF_WORDS) {
+            getNextWord()
+            true
+        } else false
+    }
 
 
-        private fun onSubmitWord() {
-            val playerWord = binding.textInputEditText.text.toString()
+    private fun onSubmitWord() {
+        val playerWord = binding.textInputEditText.text.toString()
 
-            if (viewModel.isUserWordCorrect(playerWord)) {
-                setErrorTextField(false)
-                if (viewModel.nextWord()) {
-                    updateNextWordOnScreen()
-                } else {
-                    showFinalScoreDialog()
-                }
-            }
-        }
-        private fun onSubmitWord() {
-            val playerWord = binding.textInputEditText.text.toString()
-
-            if (viewModel.isUserWordCorrect(playerWord)) {
-                setErrorTextField(false)
-                if (viewModel.nextWord()) {
-                    updateNextWordOnScreen()
-                } else {
-                    showFinalScoreDialog()
-                }
+        if (viewModel.isUserWordCorrect(playerWord)) {
+            setErrorTextField(false)
+            if (viewModel.nextWord()) {
+                updateNextWordOnScreen()
             } else {
-                setErrorTextField(true)
+                showFinalScoreDialog()
             }
-        }
-
-        private fun increaseScore() {
-            _score += SCORE_INCREASE
         }
     }
+
+    private fun onSubmitWord() {
+        val playerWord = binding.textInputEditText.text.toString()
+
+        if (viewModel.isUserWordCorrect(playerWord)) {
+            setErrorTextField(false)
+            if (viewModel.nextWord()) {
+                updateNextWordOnScreen()
+            } else {
+                showFinalScoreDialog()
+            }
+        } else {
+            setErrorTextField(true)
+        }
+    }
+
+    private fun increaseScore() {
+        _score += SCORE_INCREASE
+    }
+
+    fun isWordCorrect(playerWord: String): Boolean {
+        if (playerWord.equals(currentWord, true)) {
+            increaseScore()
+            return true
+        }
+        return false
+    }
 }
+

@@ -94,7 +94,6 @@ class GameFragment : Fragment() {
             showFinalScoreDialog()
         }
     }
-    }
 
     /*
      * Skips the current word without changing the score.
