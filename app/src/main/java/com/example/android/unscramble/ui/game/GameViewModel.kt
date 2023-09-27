@@ -31,6 +31,7 @@ class GameViewModel  : ViewModel() {
             .setPositiveButton(getString(R.string.play_again)) { _, _ ->
                 restartGame()
             }
+            .show()
     }
         super.onCleared()
         Log.d("GameFragment", "GameViewModel destroyed!")
