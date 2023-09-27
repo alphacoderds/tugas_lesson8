@@ -8,7 +8,6 @@ class GameViewModel  : ViewModel() {
     val score: Int
         get() = _score
     private var currentWordCount = 0
-    private var _currentScrambledWord = "test"
     private lateinit var _currentScrambledWord: String
     val currentScrambledWord: String
         get() = _currentScrambledWord
