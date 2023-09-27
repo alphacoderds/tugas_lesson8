@@ -12,6 +12,8 @@ class GameViewModel  : ViewModel() {
     private var _currentScrambledWord = "test"
     val currentScrambledWord: String
         get() = _currentScrambledWord
+    private var wordsList: MutableList<String> = mutableListOf()
+    private lateinit var currentWord: String
 
     override fun onCleared() {
         super.onCleared()
