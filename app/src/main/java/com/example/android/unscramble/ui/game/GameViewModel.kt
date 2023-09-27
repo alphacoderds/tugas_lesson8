@@ -4,6 +4,9 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 
 class GameViewModel  : ViewModel() {
+    private fun getNextWord() {
+        currentWord = allWordsList.random()
+    }
     init {
         Log.d("GameFragment", "gameViewModel created!")
     }
