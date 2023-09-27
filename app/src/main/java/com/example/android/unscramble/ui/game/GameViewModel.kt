@@ -24,4 +24,7 @@ class GameViewModel  : ViewModel() {
         super.onCleared()
         Log.d("GameFragment", "GameViewModel destroyed!")
     }
+    while (String(tempWord).equals(currentWord, false)) {
+        tempWord.shuffle()
+    }
 }
