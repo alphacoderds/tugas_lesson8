@@ -25,6 +25,12 @@ class GameViewModel  : ViewModel() {
             .setTitle(getString(R.string.congratulations))
             .setMessage(getString(R.string.you_scored, viewModel.score))
             .setCancelable(false)
+            .setNegativeButton(getString(R.string.exit)) { _, _ ->
+                exitGame()
+            }
+            .setPositiveButton(getString(R.string.play_again)) { _, _ ->
+                restartGame()
+            }
     }
         super.onCleared()
         Log.d("GameFragment", "GameViewModel destroyed!")
