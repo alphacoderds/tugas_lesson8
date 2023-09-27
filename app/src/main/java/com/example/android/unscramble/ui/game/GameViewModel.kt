@@ -57,6 +57,10 @@ class GameViewModel  : ViewModel() {
                 true
             } else false
         }
+        private fun onSubmitWord() {
+            val playerWord = binding.textInputEditText.text.toString()
+            ...
+        }
 
         private fun increaseScore() {
             _score += SCORE_INCREASE
