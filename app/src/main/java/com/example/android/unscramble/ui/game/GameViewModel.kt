@@ -21,6 +21,8 @@ class GameViewModel  : ViewModel() {
     }
 
     override fun onCleared() {
+        MaterialAlertDialogBuilder(requireContext())
+    }
         super.onCleared()
         Log.d("GameFragment", "GameViewModel destroyed!")
     }
