@@ -56,7 +56,7 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.currentScrambledWord.observe()
+        viewModel.currentScrambledWord.observe(viewLifecycleOwner, { newWord -> })
 
 
         // Setup a click listener for the Submit and Skip buttons.
