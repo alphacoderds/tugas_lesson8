@@ -43,14 +43,16 @@ class GameFragment : Fragment() {
     // first fragment
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         // Inflate the layout XML file and return a binding object instance
         binding = GameFragmentBinding.inflate(inflater, container, false)
         Log.d("GameFragment", "GameFragment created/re-created!")
-        Log.d("GameFragment", "Word: ${viewModel.currentScrambledWord} " +
-        "Score: ${viewModel.score} WordCount: ${viewModel.currentWordCount}")
+        Log.d(
+            "GameFragment", "Word: ${viewModel.currentScrambledWord} " +
+                    "Score: ${viewModel.score} WordCount: ${viewModel.currentWordCount}"
+        )
         return binding.root
     }
 
@@ -59,16 +61,16 @@ class GameFragment : Fragment() {
         viewModel.currentScrambledWord.observe(viewLifecycleOwner,
             { newWord ->
                 binding.textViewUnscrambledWord.text = newWord
-            viewModel.score.observe(viewLifecycleOwner,
-                { newScore ->
-                    binding.score.text = getString(R.string.score, newScore)
-            })
-            viewModel.currentWordCount.observe(viewLifecycleOwner,
+                viewModel.score.observe(viewLifecycleOwner,
+                    { newScore ->
+                        binding.score.text = getString(R.string.score, newScore)
+                    })
+                viewModel.currentWordCount.observe(viewLifecycleOwner,
                     { newWordCount ->
                         binding.wordCount.text =
                             getString(R.string.word_count, newWordCount, MAX_NO_OF_WORDS)
                     })
-        })
+            })
 
 
         // Setup a click listener for the Submit and Skip buttons.
@@ -92,6 +94,7 @@ class GameFragment : Fragment() {
             setErrorTextField(true)
         }
     }
+
     /*
      * Skips the current word without changing the score.
      * Increases the word count.
@@ -126,6 +129,7 @@ class GameFragment : Fragment() {
             }
             .show()
     }
+
     /*
      * Re-initializes the data in the ViewModel and updates the views with the new data, to
      * restart the game.
