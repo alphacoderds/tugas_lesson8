@@ -26,6 +26,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewTreeLifecycleOwner
 import com.example.android.unscramble.R
 import com.example.android.unscramble.databinding.GameFragmentBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -61,6 +62,7 @@ class GameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.gameViewModel = viewModel
         binding.maxNoOfWords = MAX_NO_OF_WORDS
+        binding.lifecycleOwner = viewLifecycleOwner
         viewModel.currentScrambledWord.observe(viewLifecycleOwner,
             { newWord ->
                 binding.textViewUnscrambledWord.text = newWord
